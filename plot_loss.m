@@ -1,0 +1,240 @@
+
+clear all; clc; close all;
+
+% Set working directories.
+rootDir = '/N/dc2/projects/lifebid/development/sos_denoising/';
+
+% Training order: 1, 2, 3, 4
+image1 = [565994 502579 493788 373079 375260 379721 388606 398914 409055 417814 426119 433262 440238 447068 453663 459155 464042 468911 473505 477350 480948];
+image2 = [68242.7 8515.67 7750.78 7524.5 7487.98 7446.41 7385.3 7345.46 7289.44 7254.23 7231.31 7211.67 7210.75 7207.84 7207.39 7218.38 7224.9 7220.99 7221.38 7207.48 7190.92];
+image3 = [9869.39 8364.18 8121.56 8001.4 7926.48 7851.51 7801.25 7757.27 7730.81 7704.31 7694.95 7699.81 7699.74 7697.81 7695.83 7691.16 7694.17 7695.27 7706.6 7725.92 7746.11];
+image4 = [748304 353450 353687 353143 353257 353327 352926 352728 352621 350300 349626 349396 349636 348819 348454 347904 348508 348041 347931 347739 347306];
+
+% Plot the loss for this training order. 
+figure(1)
+all_images = [image1 image2 image3 image4];
+plot(linspace(1, length(all_images), length(all_images))*50, all_images, 'r')
+%hold on;
+ylabel('Loss (MSE)'); xlabel('Iteration');
+title('image-1234, 1000 iterations')
+print(fullfile(rootDir, 'plots', 'plot_loss1'), '-dpng')
+
+% Training order: 4, 1, 2, 3
+image1 = [174383 40612.5 33591.4 27449.4 27297.2 27186.9 26087.1 25013.2 25000.9 25006.7 24997 24985.9 24977.9 24976.8 24973 24940.7 24949 24959.2 24959 24969 24976.2];
+image2 = [376790 368771 369911 375462 390109 406244 421658 434096 443630 453624 461347 466146 470590 474527 476443 479394 481794 483533 484414 485790 487486];
+image3 = [47097.3 8187.14 7570.61 7419.51 7355.01 7340.49 7354.29 7345.02 7321.79 7302.07 7289.28 7279.23 7267.07 7260.39 7262.33 7266.98 7267.61 7260.56 7252.12 7252.34 7253.03];
+image4 = [1.30733e+06 977402 971789 968286 971415 982138 993684 999346 1.00122e+06 1.00249e+06 995909 987174 987611 992098 1.0033e+06 996867 1.01511e+06 1.01971e+06 1.02018e+06 1.01756e+06 1.0188e+06];
+
+% Plot the loss for this training order. 
+figure(2)
+all_images = [image1 image2 image3 image4];
+plot(linspace(1, length(all_images), length(all_images))*50, all_images, 'g')
+ylabel('Loss (MSE)'); xlabel('Iteration');
+title('image-4123, 1000 iterations')
+print(fullfile(rootDir, 'plots', 'plot_loss2'), '-dpng')
+
+% Training order: 3, 4, 1, 2
+image1 = [316259 67460.2 66685.9 66365.3 66174.6 64174.8 64065.5 52645.2 52532 52452.3 52388 50442.4 50396.1 50348.2 50304.2 50267.2 50228.5 50198.1 50167.3 50139.4 50105.7];
+image2 = [31770.8 31116.7 30303.6 30338.2 30377.1 30372.1 30401.8 30380.9 30405.7 30411.2 30416.9 30415.2 30406.5 30447.3 30470.5 30439.1 30483.7 30479.3 30542.7 30509.7 30522.1];
+image3 = [383325 376125 400338 423116 438348 449039 456052 461466 473086 479113 484730 486889 490295 493044 493898 495062 496106 498026 497965 501084 501548];
+image4 = [187568 261724 266231 259727 292385 283981 233950 281420 283024 284842 277504 278584 244646 260763 237694 252919 249071 234974 231936 227317 244768];
+
+% Plot the loss for this training order. 
+figure(3)
+all_images = [image1 image2 image3 image4];
+plot(linspace(1, length(all_images), length(all_images))*50, all_images, 'b')
+ylabel('Loss (MSE)'); xlabel('Iteration');
+title('image-3412, 1000 iterations')
+print(fullfile(rootDir, 'plots', 'plot_loss3'), '-dpng')
+
+% Training order: 2, 3, 4, 1
+image1 = [133455 83526.8 83315.8 81940.5 80685.2 80683 80698.4 80733.5 80780.6 80815.2 80856.9 80894.6 80928.7 80957.6 80984.5 81009.5 81029.3 81044.7 81057.6 81068.2 81070.8];
+image2 = [126630 125496 125310 125245 125191 125135 125093 125054 125023 112896 112881 112853 112832 112814 112793 112777 112766 112757 112740 112730 112716];
+image3 = [65622.9 65286.2 65396.7 65413.7 65433.2 65452.9 65482.9 65420.2 65383.1 65374.9 65379.5 65348.7 65338.4 65284.3 65283.9 65284.8 65290.4 65261.6 65238.2 65208.1 65166.9];
+image4 = [193852 542571 645591 633185 635060 579432 539403 590832 591221 647526 364864 539424 530102 596902 605936 601264 242746 609192 409520 553564 322579];
+
+% Plot the loss for this training order. 
+figure(4)
+all_images = [image1 image2 image3 image4];
+plot(linspace(1, length(all_images), length(all_images))*50, all_images, 'k')
+ylabel('Loss (MSE)'); xlabel('Iteration');
+title('image-2341, 1000 iterations')
+print(fullfile(rootDir, 'plots', 'plot_loss4'), '-dpng')
+
+% legend({'image-1234', 'image-4123', 'image-3412', 'image-2341'})
+% legend box off
+% ylabel('Loss (MSE)'); xlabel('Iteration');
+
+% pbaspect([1 1 1])
+% box off 
+
+% Save figure.
+% print(fullfile(rootDir, 'plots', 'plot_loss'), '-dpng')
+%print(fullfile(rootDir, 'plots', 'eps', 'plot_matrix_crosscorrelations'), '-depsc')
+
+% 100 iterations
+% Training order: 2341
+image1 = [67082 42251 40567.4 39671.2 30577.9 28949.5 28674.3 28496 28376.5 28288.1 28222.1 28172.1 28134.9 28104.9 28082.3 28066.5 28051 28033.1 28016 28002.5 27993.3];
+image2 = [38656.1 38638.3 38574.3 38503.6 38437.5 38376.4 38323.2 38281.3  38243.8 38212.2 38182.3 38157.1 38131.5 36504.6 36439.6 36409.3 36387.3 36368.2 36350 36327.4 36308];
+image3 = [23779.8 22982.2 22682.7 22568.7 22521.2 22498.2 22482 22470.2 22455.3 22441.1 22430.8 22424.2 22412.1 22403.7 22394.1 22383.3 22373.3 22364.7 22355.3 22348.5 22340.9];
+image4 = [99733.4 166113 359953 439348 491953 522624 524629 585171 551282 572313 570677 562587 588073 568893 557516 570431 635366 603540 631643 625046 599686];
+
+% Plot the loss for this training order. 
+figure(5)
+all_images = [image1 image2 image3 image4];
+plot(linspace(1, length(all_images), length(all_images))*5, all_images, 'k')
+ylabel('Loss (MSE)'); xlabel('Iteration');
+title('image-2341, 100 iterations')
+print(fullfile(rootDir, 'plots', 'plot_loss5'), '-dpng')
+
+% Training order: 1234
+image1 = [552170 408891 401857 395533 393845 392904 392562 391952 384587 384640 384821 384904 385048 384942 384900 384942 384956 385327 385514 378429 378377];
+image2 = [30371.5 22163.9 19692 18465.9 17964.5 17667.6 17506.2 17391.1 17295.2 17217.1 17154.9 17101.6 17058.5 17025.5 16993.6 16967.1 16946.5 16929.1 16913.4 16900.1 16887.2];
+image3 = [24771.9 24470.6 24412.8 24354.7 24312 24272.7 24243.3 24210 24181.8 24152.9 24126.4 24104.8 24085 24062.2 24041.1 24025.1 24004.9 23984.4 23967.5 23949.7 23934.6];
+image4 = [974707 949808 932805 922220 910718 880858 855880 834746 822720 811222 800913 797417 788351 782062 774170 769447 766607 765510 767080 767835 768949];
+
+% Plot the loss for this training order. 
+figure(6)
+all_images = [image1 image2 image3 image4];
+plot(linspace(1, length(all_images), length(all_images))*5, all_images, 'k')
+ylabel('Loss (MSE)'); xlabel('Iteration');
+title('image-1234, 100 iterations')
+print(fullfile(rootDir, 'plots', 'plot_loss6'), '-dpng')
+
+% Training order: 2341
+image1 = [147602 92580.1 90316.7 80904 79017 78649.2 78443.6 78314.6 78228.6 78168 78120.6 78084 78053.2 78026.5 69378.3 69302 69257.9 69225.5 69203.4 69188.9 69178.7];
+image2 = [113043 112922 112858 112804 112764 112721 112688 112659 112630 112603 112577 112549 112523 112500 112478 112455 112430 112409 112385 112364 112343];
+image3 = [70183.3 69517.4 69264.6 69172.5 69141.6 69130.4 69129.5 69128.5 69127.3 69123.1 18007.1 16347.3 16170.6 16050.1 15975.5 15933.5 15906.3 15885.2 15865.9 15848.5 15835.1];
+image4 = [155903 426804 487498 525637 548656 557647 573348 568311 565514 608957 622451 606380 576487 622595 588688 616374 589468 639286 618582 634387 593730];
+
+% Plot the loss for this training order. 
+figure(7)
+all_images = [image1 image2 image3 image4];
+plot(linspace(1, length(all_images), length(all_images))*5, all_images, 'k')
+ylabel('Loss (MSE)'); xlabel('Iteration');
+title('image-2341, 100 iterations')
+print(fullfile(rootDir, 'plots', 'plot_loss7'), '-dpng')
+
+
+% Training order: 3412
+
+
+Epoch 0, loss 239343
+Epoch 5, loss 190269
+Epoch 10, loss 188185
+Epoch 15, loss 175573
+Epoch 20, loss 174576
+Epoch 25, loss 173815
+Epoch 30, loss 173217
+Epoch 35, loss 172755
+Epoch 40, loss 172424
+Epoch 45, loss 172177
+Epoch 50, loss 171987
+Epoch 55, loss 171840
+Epoch 60, loss 171725
+Epoch 65, loss 171636
+Epoch 70, loss 171557
+Epoch 75, loss 171492
+Epoch 80, loss 171432
+Epoch 85, loss 171381
+Epoch 90, loss 160632
+Epoch 95, loss 160511
+Epoch 100, loss 160450
+1
+Epoch 0, loss 99557.1
+Epoch 5, loss 98704.7
+Epoch 10, loss 98377.5
+Epoch 15, loss 98228.3
+Epoch 20, loss 98146.7
+Epoch 25, loss 98094.7
+Epoch 30, loss 98056.1
+Epoch 35, loss 98025.7
+Epoch 40, loss 98005.5
+Epoch 45, loss 97989
+Epoch 50, loss 97977
+Epoch 55, loss 97964.3
+Epoch 60, loss 97955.5
+Epoch 65, loss 97948.8
+Epoch 70, loss 43188.1
+Epoch 75, loss 40999.3
+Epoch 80, loss 40891
+Epoch 85, loss 40804
+Epoch 90, loss 40748.2
+Epoch 95, loss 40717.1
+Epoch 100, loss 40699.2
+2
+Epoch 0, loss 398418
+Epoch 5, loss 397615
+Epoch 10, loss 397144
+Epoch 15, loss 395672
+Epoch 20, loss 394625
+Epoch 25, loss 394151
+Epoch 30, loss 393672
+Epoch 35, loss 393299
+Epoch 40, loss 393099
+Epoch 45, loss 386265
+Epoch 50, loss 386395
+Epoch 55, loss 385332
+Epoch 60, loss 385297
+Epoch 65, loss 385263
+Epoch 70, loss 385439
+Epoch 75, loss 384338
+Epoch 80, loss 384505
+Epoch 85, loss 384602
+Epoch 90, loss 384600
+Epoch 95, loss 384803
+Epoch 100, loss 384802
+3
+Epoch 0, loss 205813
+Epoch 5, loss 223970
+Epoch 10, loss 230614
+Epoch 15, loss 236661
+Epoch 20, loss 242310
+Epoch 25, loss 247857
+Epoch 30, loss 250948
+Epoch 35, loss 253490
+Epoch 40, loss 257437
+Epoch 45, loss 261226
+Epoch 50, loss 265062
+Epoch 55, loss 270235
+Epoch 60, loss 272786
+Epoch 65, loss 274932
+Epoch 70, loss 276356
+Epoch 75, loss 278187
+Epoch 80, loss 279714
+Epoch 85, loss 280378
+Epoch 90, loss 281781
+Epoch 95, loss 282430
+Epoch 100, loss 283705
+
+
+
+
+
+
+
+% Plot for individual subject training at iter-100.
+sub001 = [166570 145594 132514 124261 123959 123870 117106 116866 116487 116158 115881 115627 108444 108237 108045 107822 107621 107421 107219 107049 106877];
+sub002 = [68779.5 35013.3 26207.8 25891.4 25719 25612.3 25517.4 25454.9 25399.6 25330.2 25254.7 25194.7 25134.4 25088.1 25057 25031.6 25017.2 25004.4 24993.6 24983.2 24976.9];
+sub003 = [87080.3 66453.2 63862.5 52554.6 50462.7 50275.2 50166.2 48538.7 48276.1 48215 48194.4 46431.5 46419.7 46409.2 46394.9 46381.7 46368.2 46356.1 46346 46332.9 46321.2];
+sub004 = [58707.7 41557.2 40936.2 40466.7 40128.2 39882.7 38722 38558.7 38434.9 38336.2 38253.7 38184.6 38125.2 38078.6 38037.5 38003.7 37971.2 35912.2 35863.9 35826.3 29396.6];
+figure(8)
+plot(linspace(1, length(sub001), length(sub001))*5, sub001, 'r')
+hold on;
+plot(linspace(1, length(sub002), length(sub002))*5, sub002, 'g')
+plot(linspace(1, length(sub003), length(sub003))*5, sub003, 'b')
+plot(linspace(1, length(sub004), length(sub004))*5, sub004, 'k')
+
+ylabel('Loss (MSE)'); xlabel('Iteration');
+title({'single-subject training (no b0),',  '100 iterations'})
+legend({'sub-001', 'sub-002', 'sub-003', 'sub-004'});
+legend box off
+pbaspect([1 1 1])
+box off 
+print(fullfile(rootDir, 'plots', 'plot_loss8'), '-dpng')
+hold off;
+
+
+
+
+
