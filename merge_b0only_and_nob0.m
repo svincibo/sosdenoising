@@ -23,7 +23,7 @@ sense_sub004 = niftiRead(fullfile(rootDir, blprojectid, 'sub-004/dwi-first-sense
 sense_panel = corr(cat(2, sense_sub001.data(:), sense_sub002.data(:), sense_sub003.data(:), sense_sub004.data(:)));
 
 % Read in and merge denoised images.
-for s = 3:length(sub)
+for s = 1:length(sub)
     
     % Get location of bvals in orignal dwi data.
     sos_bval = dlmread(fullfile(rootDir, blprojectid, sub{s}, 'dwi-first-sos-APPAb0/dwi.bvals'));
