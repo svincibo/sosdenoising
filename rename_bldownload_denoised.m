@@ -1,6 +1,6 @@
 
 % Set working directories.
-rootDir = '/N/dc2/projects/lifebid/development/sos_denoising/';
+rootDir = '/N/dc2/projects/lifebid/development/sosdenoising/';
 
 % Set bl project id.
 blprojectid = 'proj-5dc304237f55b8913bbd4cfd/';
@@ -54,6 +54,38 @@ for i = 1:size(contents, 1)
                 fname = 'denoised-second-APPAb0-train001002003-iter1000';
             elseif strcmp(metadata.tags{1, 1}, 'second') && strcmp(metadata.tags{2, 1}, 'AP-PAb0') && strcmp(metadata.tags{3, 1}, 'train-001002003004') && strcmp(metadata.tags{4, 1}, 'iter-1000')
                 fname = 'denoised-second-APPAb0-train001002003004-iter1000';
+            
+            elseif strcmp(metadata.tags{1, 1}, 'first') && strcmp(metadata.tags{2, 1}, 'AP-PAb0') && strcmp(metadata.tags{3, 1}, 'train-001') && strcmp(metadata.tags{4, 1}, 'iter-100')
+                fname = 'denoised-first-APPAb0-train001-iter100';
+            elseif strcmp(metadata.tags{1, 1}, 'first') && strcmp(metadata.tags{2, 1}, 'AP-PAb0') && strcmp(metadata.tags{3, 1}, 'train-002') && strcmp(metadata.tags{4, 1}, 'iter-100')
+                fname = 'denoised-first-APPAb0-train002-iter100';
+            elseif strcmp(metadata.tags{1, 1}, 'first') && strcmp(metadata.tags{2, 1}, 'AP-PAb0') && strcmp(metadata.tags{3, 1}, 'train-003') && strcmp(metadata.tags{4, 1}, 'iter-100')
+                fname = 'denoised-first-APPAb0-train003-iter100';
+            elseif strcmp(metadata.tags{1, 1}, 'first') && strcmp(metadata.tags{2, 1}, 'AP-PAb0') && strcmp(metadata.tags{3, 1}, 'train-004') && strcmp(metadata.tags{4, 1}, 'iter-100')
+                fname = 'denoised-first-APPAb0-train004-iter100';
+                
+            elseif strcmp(metadata.tags{1, 1}, 'first') && strcmp(metadata.tags{2, 1}, 'AP-PAb0') && strcmp(metadata.tags{3, 1}, 'train-001002') && strcmp(metadata.tags{4, 1}, 'iter-100')
+                fname = 'denoised-first-APPAb0-train001002-iter100';
+            elseif strcmp(metadata.tags{1, 1}, 'first') && strcmp(metadata.tags{2, 1}, 'AP-PAb0') && strcmp(metadata.tags{3, 1}, 'train-001003') && strcmp(metadata.tags{4, 1}, 'iter-100')
+                fname = 'denoised-first-APPAb0-train001003-iter100';
+            elseif strcmp(metadata.tags{1, 1}, 'first') && strcmp(metadata.tags{2, 1}, 'AP-PAb0') && strcmp(metadata.tags{3, 1}, 'train-001004') && strcmp(metadata.tags{4, 1}, 'iter-100')
+                fname = 'denoised-first-APPAb0-train001004-iter100';
+            elseif strcmp(metadata.tags{1, 1}, 'first') && strcmp(metadata.tags{2, 1}, 'AP-PAb0') && strcmp(metadata.tags{3, 1}, 'train-002003') && strcmp(metadata.tags{4, 1}, 'iter-100')
+                fname = 'denoised-first-APPAb0-train002003-iter100';
+            elseif strcmp(metadata.tags{1, 1}, 'first') && strcmp(metadata.tags{2, 1}, 'AP-PAb0') && strcmp(metadata.tags{3, 1}, 'train-002004') && strcmp(metadata.tags{4, 1}, 'iter-100')
+                fname = 'denoised-first-APPAb0-train002004-iter100';
+            elseif strcmp(metadata.tags{1, 1}, 'first') && strcmp(metadata.tags{2, 1}, 'AP-PAb0') && strcmp(metadata.tags{3, 1}, 'train-003004') && strcmp(metadata.tags{4, 1}, 'iter-100')
+                fname = 'denoised-first-APPAb0-train003004-iter100';
+               
+            elseif strcmp(metadata.tags{1, 1}, 'first') && strcmp(metadata.tags{2, 1}, 'AP-PAb0') && strcmp(metadata.tags{3, 1}, 'train-001002003') && strcmp(metadata.tags{4, 1}, 'iter-100')
+                fname = 'denoised-first-APPAb0-train001002003-iter100';
+            elseif strcmp(metadata.tags{1, 1}, 'first') && strcmp(metadata.tags{2, 1}, 'AP-PAb0') && strcmp(metadata.tags{3, 1}, 'train-002003004') && strcmp(metadata.tags{4, 1}, 'iter-100')
+                fname = 'denoised-first-APPAb0-train002003004-iter100';
+            elseif strcmp(metadata.tags{1, 1}, 'first') && strcmp(metadata.tags{2, 1}, 'AP-PAb0') && strcmp(metadata.tags{3, 1}, 'train-003004001') && strcmp(metadata.tags{4, 1}, 'iter-100')
+                fname = 'denoised-first-APPAb0-train003004001-iter100';
+            elseif strcmp(metadata.tags{1, 1}, 'first') && strcmp(metadata.tags{2, 1}, 'AP-PAb0') && strcmp(metadata.tags{3, 1}, 'train-004001002') && strcmp(metadata.tags{4, 1}, 'iter-100')
+                fname = 'denoised-first-APPAb0-train004001002-iter100';
+                              
             end
         end
         

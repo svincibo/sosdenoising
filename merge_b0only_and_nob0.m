@@ -54,6 +54,8 @@ for s = 1:length(sub)
         % Move over bvecs file to be used for the merged data.
         copyfile(fullfile(rootDir, blprojectid, sub{s}, 'dwi-first-sos-APPAb0/dwi.bvecs'), fullfile(rootDir, blprojectid, sub{s}, ['denoised-first-APPAb0-' train{t} '-iter100-merged/']));
         
+        clear temp1 temp2 c
+        
     end % end train
     
 end % end sub

@@ -7,7 +7,7 @@
 clear all; clc;
 
 % Set working directories.
-rootDir = '/N/dc2/projects/lifebid/development/sos_denoising/';
+rootDir = '/N/dc2/projects/lifebid/development/sosdenoising/';
 
 % Set bl project id.
 blprojectid = 'proj-5dc304237f55b8913bbd4cfd/';
@@ -25,31 +25,31 @@ sense = repmat(sense_panel, [4 4]);
 
 % 1. Train on 001-002-003, apply to 001, apply to 002, apply to 003, apply to *004*
 
-denoised_train001002_sub001 = niftiRead(fullfile(rootDir, blprojectid, 'sub-001/denoised-first-APPAb0-train001002003-iter1000/dwi.nii.gz'));
-denoised_train001002_sub002 = niftiRead(fullfile(rootDir, blprojectid, 'sub-002/denoised-first-APPAb0-train001002003-iter1000/dwi.nii.gz'));
-denoised_train001002_sub003 = niftiRead(fullfile(rootDir, blprojectid, 'sub-003/denoised-first-APPAb0-train001002003-iter1000/dwi.nii.gz'));
-denoised_train001002_sub004 = niftiRead(fullfile(rootDir, blprojectid, 'sub-004/denoised-first-APPAb0-train001002003-iter1000/dwi.nii.gz'));
+denoised_train001002_sub001 = niftiRead(fullfile(rootDir, blprojectid, 'sub-001/denoised-first-APPAb0-train001002003-iter100/dwi.nii.gz'));
+denoised_train001002_sub002 = niftiRead(fullfile(rootDir, blprojectid, 'sub-002/denoised-first-APPAb0-train001002003-iter100/dwi.nii.gz'));
+denoised_train001002_sub003 = niftiRead(fullfile(rootDir, blprojectid, 'sub-003/denoised-first-APPAb0-train001002003-iter100/dwi.nii.gz'));
+denoised_train001002_sub004 = niftiRead(fullfile(rootDir, blprojectid, 'sub-004/denoised-first-APPAb0-train001002003-iter100/dwi.nii.gz'));
 
 % 2. Train on 002-003-004, apply to *001*, apply to 002, apply to 003, apply to 004
 
-denoised_train001003_sub001 = niftiRead(fullfile(rootDir, blprojectid, 'sub-001/denoised-first-APPAb0-train002003004-iter1000/dwi.nii.gz'));
-denoised_train001003_sub002 = niftiRead(fullfile(rootDir, blprojectid, 'sub-002/denoised-first-APPAb0-train002003004-iter1000/dwi.nii.gz'));
-denoised_train001003_sub003 = niftiRead(fullfile(rootDir, blprojectid, 'sub-003/denoised-first-APPAb0-train002003004-iter1000/dwi.nii.gz'));
-denoised_train001003_sub004 = niftiRead(fullfile(rootDir, blprojectid, 'sub-004/denoised-first-APPAb0-train002003004-iter1000/dwi.nii.gz'));
+denoised_train001003_sub001 = niftiRead(fullfile(rootDir, blprojectid, 'sub-001/denoised-first-APPAb0-train002003004-iter100/dwi.nii.gz'));
+denoised_train001003_sub002 = niftiRead(fullfile(rootDir, blprojectid, 'sub-002/denoised-first-APPAb0-train002003004-iter100/dwi.nii.gz'));
+denoised_train001003_sub003 = niftiRead(fullfile(rootDir, blprojectid, 'sub-003/denoised-first-APPAb0-train002003004-iter100/dwi.nii.gz'));
+denoised_train001003_sub004 = niftiRead(fullfile(rootDir, blprojectid, 'sub-004/denoised-first-APPAb0-train002003004-iter100/dwi.nii.gz'));
 
 % 3. Train on 003-004-001, apply to 001, apply to *002*, apply to 003, apply to 004
 
-denoised_train001004_sub001 = niftiRead(fullfile(rootDir, blprojectid, 'sub-001/denoised-first-APPAb0-train003004001-iter1000/dwi.nii.gz'));
-denoised_train001004_sub002 = niftiRead(fullfile(rootDir, blprojectid, 'sub-002/denoised-first-APPAb0-train003004001-iter1000/dwi.nii.gz'));
-denoised_train001004_sub003 = niftiRead(fullfile(rootDir, blprojectid, 'sub-003/denoised-first-APPAb0-train003004001-iter1000/dwi.nii.gz'));
-denoised_train001004_sub004 = niftiRead(fullfile(rootDir, blprojectid, 'sub-004/denoised-first-APPAb0-train003004001-iter1000/dwi.nii.gz'));
+denoised_train001004_sub001 = niftiRead(fullfile(rootDir, blprojectid, 'sub-001/denoised-first-APPAb0-train003004001-iter100/dwi.nii.gz'));
+denoised_train001004_sub002 = niftiRead(fullfile(rootDir, blprojectid, 'sub-002/denoised-first-APPAb0-train003004001-iter100/dwi.nii.gz'));
+denoised_train001004_sub003 = niftiRead(fullfile(rootDir, blprojectid, 'sub-003/denoised-first-APPAb0-train003004001-iter100/dwi.nii.gz'));
+denoised_train001004_sub004 = niftiRead(fullfile(rootDir, blprojectid, 'sub-004/denoised-first-APPAb0-train003004001-iter100/dwi.nii.gz'));
 
 % 4. Train on 004-001-002, apply to 001, apply to 002, apply to *003*, apply to 004
 
-denoised_train002003_sub001 = niftiRead(fullfile(rootDir, blprojectid, 'sub-001/denoised-first-APPAb0-train004001002-iter1000/dwi.nii.gz'));
-denoised_train002003_sub002 = niftiRead(fullfile(rootDir, blprojectid, 'sub-002/denoised-first-APPAb0-train004001002-iter1000/dwi.nii.gz'));
-denoised_train002003_sub003 = niftiRead(fullfile(rootDir, blprojectid, 'sub-003/denoised-first-APPAb0-train004001002-iter1000/dwi.nii.gz'));
-denoised_train002003_sub004 = niftiRead(fullfile(rootDir, blprojectid, 'sub-004/denoised-first-APPAb0-train004001002-iter1000/dwi.nii.gz'));
+denoised_train002003_sub001 = niftiRead(fullfile(rootDir, blprojectid, 'sub-001/denoised-first-APPAb0-train004001002-iter100/dwi.nii.gz'));
+denoised_train002003_sub002 = niftiRead(fullfile(rootDir, blprojectid, 'sub-002/denoised-first-APPAb0-train004001002-iter100/dwi.nii.gz'));
+denoised_train002003_sub003 = niftiRead(fullfile(rootDir, blprojectid, 'sub-003/denoised-first-APPAb0-train004001002-iter100/dwi.nii.gz'));
+denoised_train002003_sub004 = niftiRead(fullfile(rootDir, blprojectid, 'sub-004/denoised-first-APPAb0-train004001002-iter100/dwi.nii.gz'));
 
 % % Sub-sample to reduce memory consumption.
 % subsample = 1:2:size(denoised_train002003_sub004.data(:), 1);
@@ -62,11 +62,12 @@ denoised_train001004_sub001.data(:), denoised_train001004_sub002.data(:), denois
 denoised_train002003_sub001.data(:), denoised_train002003_sub002.data(:), denoised_train002003_sub003.data(:), denoised_train002003_sub004.data(:)));
 
 figure(1)
-temp = c_all-sense;
+temp = c_all - sense;
 imagesc(temp);
 colormap parula
 h = colorbar;
 caxis([-0.12 0.07]);
+% caxis([0.75 1]);
 h.Position = [0.90 0.19 0.015 0.7357];
 pbaspect([1 1 1])
 hold on;
@@ -104,12 +105,12 @@ ax2.YTickLabelRotation = 90;
 % h.Position = [0.84 0.19 0.015 0.7357];
 % caxis([min(c_all(:)) 1])
 
-title('sos-denoised and sos-denoised correlation, sense tresholded')
+title('sos-denoised and sos-denoised correlation, sense thresholded')
 pbaspect([1 1 1])
 box off 
 
 % Save figure.
-print(fullfile(rootDir, 'plots', 'plot_crossvalidation_leaveoneout_sensethresholded'), '-dpng')
+print(fullfile(rootDir, 'plots', 'plot_crossvalidation_leaveoneout_iter100_sensethresholded'), '-dpng')
 %print(fullfile(rootDir, 'plots', 'eps', 'plot_matrix_crosscorrelations'), '-depsc')
 
 hold off;
@@ -121,45 +122,45 @@ sense = repmat(sense_panel, [6 6]);
 
 % 1. Train on 001-002, apply to 001, apply to 002, apply to *003*, apply to *004*
 
-denoised_train001002_sub001 = niftiRead(fullfile(rootDir, blprojectid, 'sub-001/denoised-first-APPAb0-train001002-iter1000/dwi.nii.gz'));
-denoised_train001002_sub002 = niftiRead(fullfile(rootDir, blprojectid, 'sub-002/denoised-first-APPAb0-train001002-iter1000/dwi.nii.gz'));
-denoised_train001002_sub003 = niftiRead(fullfile(rootDir, blprojectid, 'sub-003/denoised-first-APPAb0-train001002-iter1000/dwi.nii.gz'));
-denoised_train001002_sub004 = niftiRead(fullfile(rootDir, blprojectid, 'sub-004/denoised-first-APPAb0-train001002-iter1000/dwi.nii.gz'));
+denoised_train001002_sub001 = niftiRead(fullfile(rootDir, blprojectid, 'sub-001/denoised-first-APPAb0-train001002-iter100/dwi.nii.gz'));
+denoised_train001002_sub002 = niftiRead(fullfile(rootDir, blprojectid, 'sub-002/denoised-first-APPAb0-train001002-iter100/dwi.nii.gz'));
+denoised_train001002_sub003 = niftiRead(fullfile(rootDir, blprojectid, 'sub-003/denoised-first-APPAb0-train001002-iter100/dwi.nii.gz'));
+denoised_train001002_sub004 = niftiRead(fullfile(rootDir, blprojectid, 'sub-004/denoised-first-APPAb0-train001002-iter100/dwi.nii.gz'));
 
 % 2. Train on 001-003, apply to *001*, apply to *002*, apply to 003, apply to 004
 
-denoised_train001003_sub001 = niftiRead(fullfile(rootDir, blprojectid, 'sub-001/denoised-first-APPAb0-train001003-iter1000/dwi.nii.gz'));
-denoised_train001003_sub002 = niftiRead(fullfile(rootDir, blprojectid, 'sub-002/denoised-first-APPAb0-train001003-iter1000/dwi.nii.gz'));
-denoised_train001003_sub003 = niftiRead(fullfile(rootDir, blprojectid, 'sub-003/denoised-first-APPAb0-train001003-iter1000/dwi.nii.gz'));
-denoised_train001003_sub004 = niftiRead(fullfile(rootDir, blprojectid, 'sub-004/denoised-first-APPAb0-train001003-iter1000/dwi.nii.gz'));
+denoised_train001003_sub001 = niftiRead(fullfile(rootDir, blprojectid, 'sub-001/denoised-first-APPAb0-train001003-iter100/dwi.nii.gz'));
+denoised_train001003_sub002 = niftiRead(fullfile(rootDir, blprojectid, 'sub-002/denoised-first-APPAb0-train001003-iter100/dwi.nii.gz'));
+denoised_train001003_sub003 = niftiRead(fullfile(rootDir, blprojectid, 'sub-003/denoised-first-APPAb0-train001003-iter100/dwi.nii.gz'));
+denoised_train001003_sub004 = niftiRead(fullfile(rootDir, blprojectid, 'sub-004/denoised-first-APPAb0-train001003-iter100/dwi.nii.gz'));
 
 % 3. Train on 001-004, apply to 001, apply to *002*, apply to *003*, apply to 004
 
-denoised_train001004_sub001 = niftiRead(fullfile(rootDir, blprojectid, 'sub-001/denoised-first-APPAb0-train001004-iter1000/dwi.nii.gz'));
-denoised_train001004_sub002 = niftiRead(fullfile(rootDir, blprojectid, 'sub-002/denoised-first-APPAb0-train001004-iter1000/dwi.nii.gz'));
-denoised_train001004_sub003 = niftiRead(fullfile(rootDir, blprojectid, 'sub-003/denoised-first-APPAb0-train001004-iter1000/dwi.nii.gz'));
-denoised_train001004_sub004 = niftiRead(fullfile(rootDir, blprojectid, 'sub-004/denoised-first-APPAb0-train001004-iter1000/dwi.nii.gz'));
+denoised_train001004_sub001 = niftiRead(fullfile(rootDir, blprojectid, 'sub-001/denoised-first-APPAb0-train001004-iter100/dwi.nii.gz'));
+denoised_train001004_sub002 = niftiRead(fullfile(rootDir, blprojectid, 'sub-002/denoised-first-APPAb0-train001004-iter100/dwi.nii.gz'));
+denoised_train001004_sub003 = niftiRead(fullfile(rootDir, blprojectid, 'sub-003/denoised-first-APPAb0-train001004-iter100/dwi.nii.gz'));
+denoised_train001004_sub004 = niftiRead(fullfile(rootDir, blprojectid, 'sub-004/denoised-first-APPAb0-train001004-iter100/dwi.nii.gz'));
 
 % 4. Train on 002-003, apply to 001, apply to *002*, apply to *003*, apply to 004
 
-denoised_train002003_sub001 = niftiRead(fullfile(rootDir, blprojectid, 'sub-001/denoised-first-APPAb0-train002003-iter1000/dwi.nii.gz'));
-denoised_train002003_sub002 = niftiRead(fullfile(rootDir, blprojectid, 'sub-002/denoised-first-APPAb0-train002003-iter1000/dwi.nii.gz'));
-denoised_train002003_sub003 = niftiRead(fullfile(rootDir, blprojectid, 'sub-003/denoised-first-APPAb0-train002003-iter1000/dwi.nii.gz'));
-denoised_train002003_sub004 = niftiRead(fullfile(rootDir, blprojectid, 'sub-004/denoised-first-APPAb0-train002003-iter1000/dwi.nii.gz'));
+denoised_train002003_sub001 = niftiRead(fullfile(rootDir, blprojectid, 'sub-001/denoised-first-APPAb0-train002003-iter100/dwi.nii.gz'));
+denoised_train002003_sub002 = niftiRead(fullfile(rootDir, blprojectid, 'sub-002/denoised-first-APPAb0-train002003-iter100/dwi.nii.gz'));
+denoised_train002003_sub003 = niftiRead(fullfile(rootDir, blprojectid, 'sub-003/denoised-first-APPAb0-train002003-iter100/dwi.nii.gz'));
+denoised_train002003_sub004 = niftiRead(fullfile(rootDir, blprojectid, 'sub-004/denoised-first-APPAb0-train002003-iter100/dwi.nii.gz'));
 
 % 5. Train on 002-004, apply to 001, apply to *002*, apply to 003, apply to *004*
 
-denoised_train002004_sub001 = niftiRead(fullfile(rootDir, blprojectid, 'sub-001/denoised-first-APPAb0-train002004-iter1000/dwi.nii.gz'));
-denoised_train002004_sub002 = niftiRead(fullfile(rootDir, blprojectid, 'sub-002/denoised-first-APPAb0-train002004-iter1000/dwi.nii.gz'));
-denoised_train002004_sub003 = niftiRead(fullfile(rootDir, blprojectid, 'sub-003/denoised-first-APPAb0-train002004-iter1000/dwi.nii.gz'));
-denoised_train002004_sub004 = niftiRead(fullfile(rootDir, blprojectid, 'sub-004/denoised-first-APPAb0-train002004-iter1000/dwi.nii.gz'));
+denoised_train002004_sub001 = niftiRead(fullfile(rootDir, blprojectid, 'sub-001/denoised-first-APPAb0-train002004-iter100/dwi.nii.gz'));
+denoised_train002004_sub002 = niftiRead(fullfile(rootDir, blprojectid, 'sub-002/denoised-first-APPAb0-train002004-iter100/dwi.nii.gz'));
+denoised_train002004_sub003 = niftiRead(fullfile(rootDir, blprojectid, 'sub-003/denoised-first-APPAb0-train002004-iter100/dwi.nii.gz'));
+denoised_train002004_sub004 = niftiRead(fullfile(rootDir, blprojectid, 'sub-004/denoised-first-APPAb0-train002004-iter100/dwi.nii.gz'));
 
 % 6. Train on 003-004, apply to 001, apply to 002, apply to *003*, apply to *004*
 
-denoised_train003004_sub001 = niftiRead(fullfile(rootDir, blprojectid, 'sub-001/denoised-first-APPAb0-train003004-iter1000/dwi.nii.gz'));
-denoised_train003004_sub002 = niftiRead(fullfile(rootDir, blprojectid, 'sub-002/denoised-first-APPAb0-train003004-iter1000/dwi.nii.gz'));
-denoised_train003004_sub003 = niftiRead(fullfile(rootDir, blprojectid, 'sub-003/denoised-first-APPAb0-train003004-iter1000/dwi.nii.gz'));
-denoised_train003004_sub004 = niftiRead(fullfile(rootDir, blprojectid, 'sub-004/denoised-first-APPAb0-train003004-iter1000/dwi.nii.gz'));
+denoised_train003004_sub001 = niftiRead(fullfile(rootDir, blprojectid, 'sub-001/denoised-first-APPAb0-train003004-iter100/dwi.nii.gz'));
+denoised_train003004_sub002 = niftiRead(fullfile(rootDir, blprojectid, 'sub-002/denoised-first-APPAb0-train003004-iter100/dwi.nii.gz'));
+denoised_train003004_sub003 = niftiRead(fullfile(rootDir, blprojectid, 'sub-003/denoised-first-APPAb0-train003004-iter100/dwi.nii.gz'));
+denoised_train003004_sub004 = niftiRead(fullfile(rootDir, blprojectid, 'sub-004/denoised-first-APPAb0-train003004-iter100/dwi.nii.gz'));
 
 % % Sub-sample to reduce memory consumption.
 % subsample = 1:2:size(denoised_train001004_sub004.data(:), 1);
@@ -175,11 +176,12 @@ denoised_train002004_sub001.data(:), denoised_train002004_sub002.data(:), denois
 denoised_train003004_sub001.data(:), denoised_train003004_sub002.data(:), denoised_train003004_sub003.data(:), denoised_train003004_sub004.data(:)));
 
 figure(2)
-temp = c_all-sense;
+temp = c_all - sense;
 imagesc(temp);
 colormap parula
 h = colorbar;
 caxis([-0.12 0.07]);
+% caxis([0.75 1]);
 h.Position = [0.90 0.19 0.015 0.7357];
 pbaspect([1 1 1])
 hold on;
@@ -223,12 +225,12 @@ ax2.YTickLabelRotation = 90;
 % h.Position = [0.84 0.19 0.015 0.7357];
 % caxis([min(c_all(:)) 1])
 
-title('sos-denoised and sos-denoised correlation, sense tresholded')
+title('sos-denoised and sos-denoised correlation, sense thresholded')
 pbaspect([1 1 1])
 box off 
 
 % Save figure.
-print(fullfile(rootDir, 'plots', 'plot_crossvalidation_splithalf_sensethresholded'), '-dpng')
+print(fullfile(rootDir, 'plots', 'plot_crossvalidation_splithalf_iter100_sensethresholded'), '-dpng')
 %print(fullfile(rootDir, 'plots', 'eps', 'plot_matrix_crosscorrelations'), '-depsc')
 
 hold off;

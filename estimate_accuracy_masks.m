@@ -7,30 +7,37 @@
 clear all; clc;
 
 % Set working directories.
-rootDir = '/N/dc2/projects/lifebid/development/sos_denoising/';
+rootDir = '/N/dc2/projects/lifebid/development/sosdenoising/';
 
 % Set bl project id.
 blprojectid = 'proj-5dc304237f55b8913bbd4cfd/';
 
 sub = {'sub-001', 'sub-002', 'sub-003', 'sub-004'};
 
+% Set threshold for binarization of masks.
+bin_thresh = 0.50;
+
 for i = 1:length(sub)
     
     % Read in the sos-denoised data trained with 1000 iterations.
-    denoised_1 = niftiRead(fullfile(rootDir, blprojectid, [sub{i} '/denoised-first-APPAb0-train001-iter100-merged/dwi.nii.gz']));
+    denoised_1 = niftiRead(fullfile(rootDir, blprojectid, [sub{i} '/denoised-first-APPAb0-train001-iter1000/dwi.nii.gz']));
 
     % Read in the sense data to use as baseline.
     sense_1 = niftiRead(fullfile(rootDir, blprojectid, [sub{i} '/dwi-first-sense-APPAb0/dwi.nii.gz']));
     sense_2 = niftiRead(fullfile(rootDir, blprojectid, [sub{i} '/dwi-second-sense-APPAb0/dwi.nii.gz']));
         
-%     % Read in the first sense mask.
-%     mask_1 = niftiRead(fullfile(rootDir, blprojectid, [sub{i} '/mask-first-sense-APPAb0/mask.nii.gz']));
+    % Read in the first sense mask.
+    mask_1 = niftiRead(fullfile(rootDir, blprojectid, [sub{i} '/mask-5tt/mask.nii.gz']));
+    gm = double(repmat(imbinarize(mask_1.data(:, :, :, 1), bin_thresh), [1 1 1 87])));
+    wm = double(repmat(imbinarize(mask_1.data(:, :, :, 3), bin_thresh), [1 1 1 87]));
+    csf = double(repmat(imbinarize(mask_1.data(:, :, :, 4), bin_thresh), [1 1 1 87]));
+    
 %     mask = typecast(repmat(mask_1.data(:), [87 1]), 'single');
-%     
-%     % Apply mask.
-%     denoised_1.data = denoised_1.data(:).*mask;
-%     sense_1.data = sense_1.data(:).*mask;
-%     sense_2.data = sense_2.data(:).*mask;
+    
+    % Apply mask.
+    denoised_1.data = denoised_1.data(:).*gm(:);
+    sense_1.data = sense_1.data(:).*mask;
+    sense_2.data = sense_2.data(:).*mask;
 
     figure(i)
     alpha = .4;
@@ -61,7 +68,7 @@ for i = 1:length(sub)
     box off
     
     % Save figure.
-    print(fullfile(rootDir, 'plots', ['plot_scatter_accuracy_' sub{i} '_merged']), '-dpng')
+    print(fullfile(rootDir, 'plots', ['plot_scatter_accuracy_' sub{i}]), '-dpng')
     %print(fullfile(rootDir, 'plots', 'eps', 'plot_scatter_compareiterations'), '-depsc')
     
     hold off;
