@@ -12,8 +12,8 @@ rootDir = '/Volumes/240/sosdenoising/';
 % Set bl project id.
 blprojectid = 'proj-5ee1659ec5972b1b5fb443d3';
 
-testsub = {'sub-002'};
-trainsub = {'sub-003', 'sub-004'};
+testsub = {'sub-004'};
+trainsub = {'sub-002', 'sub-003'};
 
 % Set threshold for binarization of masks.
 bin_thresh = 0.50;
